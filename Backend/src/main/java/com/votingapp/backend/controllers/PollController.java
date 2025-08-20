@@ -2,6 +2,7 @@ package com.votingapp.backend.controllers;
 
 import com.votingapp.backend.model.Poll;
 import com.votingapp.backend.services.PollService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,4 +29,9 @@ public class PollController {
         return  pollService.getAllPolls();
     }
 
+    //    get all polls
+    @GetMapping("/{id}")
+    public ResponseEntity<Poll> getPoll(@PathVariable Long id) {
+        return  pollService.getPollById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
 }
