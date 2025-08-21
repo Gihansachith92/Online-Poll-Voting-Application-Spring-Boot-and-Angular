@@ -1,6 +1,7 @@
 package com.votingapp.backend.controllers;
 
 import com.votingapp.backend.model.Poll;
+import com.votingapp.backend.request.Vote;
 import com.votingapp.backend.services.PollService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,4 +35,12 @@ public class PollController {
     public ResponseEntity<Poll> getPoll(@PathVariable Long id) {
         return  pollService.getPollById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
+
+    //creating voting option
+    @PostMapping("/vote")
+    public void vote(@RequestBody Vote vote){
+        pollService.vote(vote.getPollId(), vote.getOptionIndex());
+    }
+
+
 }
