@@ -22,6 +22,7 @@ export class PollComponent implements OnInit{
   loadPolls() {
     this.pollService.getPolls().subscribe({
       next: (data) => {
+          console.log('Polls received:', data);
           this.polls = data;
       },
       error: (error) => {
