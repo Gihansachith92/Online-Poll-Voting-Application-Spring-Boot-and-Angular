@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PollService } from '../poll.service';
 import { Poll } from '../poll.models';
 
@@ -8,10 +8,13 @@ import { Poll } from '../poll.models';
   templateUrl: './poll.component.html',
   styleUrl: './poll.component.css'
 })
-export class PollComponent {
+export class PollComponent implements OnInit{
   polls: Poll[] = [];
   constructor(private pollService: PollService){
+  }
 
+  ngOnInit(): void {
+      this.loadPolls();
   }
 
   loadPolls() {
