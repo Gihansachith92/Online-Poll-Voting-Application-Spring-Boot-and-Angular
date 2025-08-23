@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ChangeDetectorRef} from '@angular/core';
 import { PollService } from '../poll.service';
 import { Poll } from '../poll.models';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PollComponent implements OnInit{
   polls: Poll[] = [];
-  constructor(private pollService: PollService){
+  constructor(private pollService: PollService , private cdr: ChangeDetectorRef){
   }
 
   ngOnInit(): void {
@@ -24,6 +24,7 @@ export class PollComponent implements OnInit{
       next: (data) => {
           console.log('Polls received:', data);
           this.polls = data;
+          this.cdr.detectChanges();
       },
       error: (error) => {
         console.error("Error fetching polls: ", error);
