@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './poll.component.css'
 })
 export class PollComponent implements OnInit{
+  isSubmitting = false;
 
   newPoll: Poll = {
     id: null,
@@ -44,14 +45,18 @@ export class PollComponent implements OnInit{
   }
 
   createPoll() {
+    if (this.isSubmitting) return;
+    this.isSubmitting = true;
     this.pollService.createPoll(this.newPoll).subscribe({
-       next: (createdPoll) => {
-        this.polls.push(createdPoll);
+      next: (createdPoll) => {
+        this.loadPolls();
         this.resetPoll();
-       },
-       error: (error) => {
-        console.error("Error creating poll: ", error);       
-       }
+        this.isSubmitting = false;
+      },
+      error: (error) => {
+        console.error("Error creating poll: ", error);
+        this.isSubmitting = false;
+      }
     });
   }
 

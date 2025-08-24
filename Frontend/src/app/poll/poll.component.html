@@ -10,7 +10,7 @@
      </div>
    </div>
 
-   <button (click)="createPoll()" class="btn btn-primary">Create Poll</button>
+   <button (click)="createPoll()" class="btn btn-primary" [disabled]="isSubmitting" >Create Poll</button>
 <h2 class="mt-4 text-center">Available Polls</h2>
 
 <div class="polls-list">
