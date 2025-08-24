@@ -11,6 +11,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './poll.component.css'
 })
 export class PollComponent implements OnInit{
+  
+  newPoll: Poll = {
+    id: 0,
+    question: '',
+    options: [
+      {voteOption: '', voteCount: 0},
+      {voteOption: '', voteCount: 0}
+    ]
+  };
+
   polls: Poll[] = [];
   constructor(private pollService: PollService , private cdr: ChangeDetectorRef){
   }
