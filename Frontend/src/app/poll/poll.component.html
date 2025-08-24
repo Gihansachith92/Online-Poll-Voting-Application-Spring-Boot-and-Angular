@@ -7,6 +7,7 @@
   <div class="options-container mb-3">
     <div *ngFor="let option of newPoll.options; let i = index; trackBy: trackByIndex " class="input-group mb-2">
       <input placeholder="Option" class="form-control" required [(ngModel)]="option.voteOption"/>
+      <button *ngIf="newPoll.options.length > 2" class="btn btn-danger" (click) = "newPoll.options.splice(i, 1)" >Remove</button>
     </div>
   </div>
 
