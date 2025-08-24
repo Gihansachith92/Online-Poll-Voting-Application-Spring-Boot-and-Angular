@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class PollComponent implements OnInit{
 
   newPoll: Poll = {
-    id: 0,
+    id: null,
     question: '',
     options: [
       {voteOption: '', voteCount: 0},
@@ -57,7 +57,7 @@ export class PollComponent implements OnInit{
 
   resetPoll(){
     this.newPoll = {
-    id: 0,
+    id: null,
     question: '',
     options: [
       {voteOption: '', voteCount: 0},
