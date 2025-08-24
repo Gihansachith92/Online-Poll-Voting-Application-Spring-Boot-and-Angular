@@ -72,16 +72,12 @@ export class PollComponent implements OnInit{
   }
 
   vote(pollId: number, optionIndex: number){
-    this.pollService.vote(pollId,optionIndex).subscribe({
-        next: () => {
-          const poll = this.polls.find(p => p.id === pollId);
-          if (poll) {
-            poll.options[optionIndex].voteCount++;
-          }
+    this.pollService.vote(pollId, optionIndex).subscribe({
+      next: () => {
+        this.loadPolls(); // Reload polls after voting
       },
       error: (error) => {
         console.error("Error voting polls: ", error);
-        
       }
     });
   }
