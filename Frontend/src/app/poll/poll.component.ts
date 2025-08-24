@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './poll.component.css'
 })
 export class PollComponent implements OnInit{
-  
+
   newPoll: Poll = {
     id: 0,
     question: '',
@@ -41,6 +41,10 @@ export class PollComponent implements OnInit{
         
       }
     });
+  }
+
+  trackByIndex(index: number): number {
+    return index;
   }
 
 }
