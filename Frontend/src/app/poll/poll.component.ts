@@ -64,15 +64,16 @@ export class PollComponent implements OnInit{
     });
   }
 
-  resetPoll(){
+  resetPoll() {
     this.newPoll = {
-    id: null,
-    question: '',
-    options: [
-      {voteOption: '', voteCount: 0},
-      {voteOption: '', voteCount: 0}
-    ]
-  };
+      id: null,
+      question: '',
+      options: [
+        { voteOption: '', voteCount: 0 },
+        { voteOption: '', voteCount: 0 }
+      ]
+    };
+    this.cdr.detectChanges(); // Ensure UI updates
   }
 
   vote(pollId: number, optionIndex: number){
