@@ -44,6 +44,10 @@ export class PollComponent implements OnInit{
     });
   }
 
+  addOption() {
+    this.newPoll.options.push({voteOption: '', voteCount: 0});
+  }
+
   createPoll() {
     if (this.isSubmitting) return;
     this.isSubmitting = true;
